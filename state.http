@@ -1,0 +1,29 @@
+### POST for body
+POST http://localhost:8080/state
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstKey": "firstValue"
+}
+
+> {%
+    client.test("created", () => {
+        client.assert(response.status === 201, "created")
+    })
+    client.global.set("id", response.body.id)
+
+    client.log(JSON.stringify(response.body, null, 2));
+%}
+
+### POST for jsonbody
+GET http://localhost:8080/state/{{id}}
+Accept: application/json
+
+> {%
+    client.test("found", () => {
+        client.assert(response.status === 200, "found")
+    })
+
+    client.log(JSON.stringify(response.body, null, 2));
+%}

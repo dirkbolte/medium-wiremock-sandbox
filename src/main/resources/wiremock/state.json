@@ -1,0 +1,66 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "urlPattern": "/state",
+        "headers": {
+          "accept": {
+            "contains": "json"
+          },
+          "content-type": {
+            "contains": "json"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+          "id": "{{randomValue length=32 type='ALPHANUMERIC' uppercase=false}}",
+          "firstKey": "{{jsonPath request.body '$.firstKey'}}",
+          "createdAt": "{{now}}",
+          "updatedAt": "{{now}}"
+        }
+      },
+      "postServeActions": [
+        {
+          "name": "recordState",
+          "parameters": {
+            "context": "{{jsonPath response.body '$.id'}}",
+            "state": {
+              "firstKey": "{{jsonPath request.body '$.firstKey'}}",
+              "createdAt": "{{jsonPath response.body '$.createdAt'}}",
+              "updatedAt": "{{jsonPath response.body '$.updatedAt'}}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/state/[^\/]+",
+        "headers": {
+          "accept": {
+            "contains": "json"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+          "id": "{{request.pathSegments.[1]}}",
+          "firstKey": "{{state context=request.pathSegments.[1] property='firstKey'}}",
+          "createdAt": "{{state context=request.pathSegments.[1] property='createdAt'}}",
+          "updatedAt": "{{state context=request.pathSegments.[1] property='updatedAt'}}"
+        }
+      }
+    }
+  ]
+}

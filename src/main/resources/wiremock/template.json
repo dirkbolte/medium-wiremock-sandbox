@@ -1,0 +1,74 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/template/[^\/]+",
+        "headers": {
+          "accept": {
+            "contains": "json"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+          "id": "{{request.pathSegments.[1]}}",
+          "dynamic": "{{randomValue length=32 type='ALPHANUMERIC' uppercase=false}}",
+          "createdAt": "{{now}}",
+          "updatedAt": "{{now}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPattern": "/template/body",
+        "headers": {
+          "accept": {
+            "contains": "json"
+          },
+          "content-type": {
+            "contains": "json"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "{\n      \"id\": \"{{randomValue length=32 type='ALPHANUMERIC' uppercase=false}}\",\n      \"firstKey\": \"{{jsonPath request.body '$.firstKey'}}\",\n      \"firstObject\": {{{jsonPath request.body '$.firstObject'}}},\n      \"createdAt\": \"{{now}}\",\n      \"updatedAt\": \"{{now}}\"\n    }"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPattern": "/template/jsonbody",
+        "headers": {
+          "accept": {
+            "contains": "json"
+          },
+          "content-type": {
+            "contains": "json"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+          "id": "{{randomValue length=32 type='ALPHANUMERIC' uppercase=false}}",
+          "firstKey": "{{jsonPath request.body '$.firstKey'}}",
+          "createdAt": "{{now}}",
+          "updatedAt": "{{now}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPattern": "/plain",
+    "headers": {
+      "accept": {
+        "contains": "json"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "id": "oghrhc8uh0q0b5vmytxd7zvxm3ydkm5j",
+      "createdAt": "2023-06-21T12:35:48Z",
+      "updatedAt": "2023-06-21T12:35:48Z"
+    }
+  }
+}

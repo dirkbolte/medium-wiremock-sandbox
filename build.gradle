@@ -1,0 +1,27 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.0'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.github.dirkbolte'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'com.github.tomakehurst:wiremock:3.0.0-beta-8'
+	implementation 'com.github.dirkbolte.wiremock.extensions:state:0.0.1'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

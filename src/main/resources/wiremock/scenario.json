@@ -1,0 +1,85 @@
+{
+  "mappings": [
+    {
+      "scenarioName": "CRUD",
+      "requiredScenarioState": "Started",
+      "request": {
+        "method": "GET",
+        "url": "/scenario/pnodhwtvjginknymyw9gi9zds4a9z5xv",
+        "headers": {
+          "accept": {
+            "contains": "json"
+          }
+        }
+      },
+      "response": {
+        "status": 404,
+        "body": "CRUD scenario not found"
+      }
+    },
+    {
+      "scenarioName": "CRUD",
+      "requiredScenarioState": "Started",
+      "newScenarioState": "Created",
+      "request": {
+        "method": "POST",
+        "urlPattern": "/scenario",
+        "headers": {
+          "accept": {
+            "contains": "json"
+          },
+          "content-type": {
+            "contains": "json"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+          "id": "pnodhwtvjginknymyw9gi9zds4a9z5xv",
+          "createdAt": "2023-06-21T13:16:58Z",
+          "updatedAt": "2023-06-21T13:16:58Z"
+        }
+      }
+    },
+    {
+      "scenarioName": "CRUD",
+      "requiredScenarioState": "Created",
+      "request": {
+        "method": "GET",
+        "url": "/scenario/pnodhwtvjginknymyw9gi9zds4a9z5xv",
+        "headers": {
+          "accept": {
+            "contains": "json"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+          "id": "pnodhwtvjginknymyw9gi9zds4a9z5xv",
+          "createdAt": "2023-06-21T13:16:58Z",
+          "updatedAt": "2023-06-21T13:16:58Z"
+        }
+      }
+    },
+    {
+      "scenarioName": "CRUD",
+      "requiredScenarioState": "Created",
+      "newScenarioState": "Started",
+      "request": {
+        "method": "DELETE",
+        "urlPattern": "/scenario/pnodhwtvjginknymyw9gi9zds4a9z5xv"
+      },
+      "response": {
+        "status": 204
+      }
+    }
+  ]
+}

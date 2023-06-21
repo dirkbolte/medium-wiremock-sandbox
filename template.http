@@ -1,0 +1,43 @@
+### GET
+GET http://localhost:8080/template/my_special_path_parameter
+Accept: application/json
+
+> {%
+    client.log(JSON.stringify(response.body, null, 2));
+%}
+
+### POST for body
+POST http://localhost:8080/template/body
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstKey": "firstValue",
+  "unhandledKey": "unhandledValue",
+  "firstObject": {
+    "firstObjectKey": "firstObjectValue",
+    "secondObjectKey": "secondObjectValue"
+  }
+}
+
+> {%
+    client.log(JSON.stringify(response.body, null, 2));
+%}
+
+### POST for jsonbody
+POST http://localhost:8080/template/jsonbody
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstKey": "firstValue",
+  "unhandledKey": "unhandledValue",
+  "firstObject": {
+    "firstObjectKey": "firstObjectValue",
+    "secondObjectKey": "secondObjectValue"
+  }
+}
+
+> {%
+    client.log(JSON.stringify(response.body, null, 2));
+%}
