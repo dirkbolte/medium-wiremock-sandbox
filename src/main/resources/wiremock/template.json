@@ -41,7 +41,7 @@
         "headers": {
           "Content-Type": "application/json"
         },
-        "body": "{\n      \"id\": \"{{randomValue length=32 type='ALPHANUMERIC' uppercase=false}}\",\n      \"firstKey\": \"{{jsonPath request.body '$.firstKey'}}\",\n      \"firstObject\": {{{jsonPath request.body '$.firstObject'}}},\n      \"createdAt\": \"{{now}}\",\n      \"updatedAt\": \"{{now}}\"\n    }"
+        "body": "{\"id\": \"{{randomValue length=32 type='ALPHANUMERIC' uppercase=false}}\", \"firstKey\": \"{{jsonPath request.body '$.firstKey'}}\",\"firstObject\": {{{jsonPath request.body '$.firstObject'}}},\"createdAt\": \"{{now}}\", \"updatedAt\": \"{{now}}\"}"
       }
     },
     {
